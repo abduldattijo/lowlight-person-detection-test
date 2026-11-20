@@ -28,7 +28,7 @@ Two detectors, both Apache-2.0: `PekingU/rtdetr_r50vd` (run first) and `facebook
 | `results/detections/`, `results/detections_detr/` | the raw detections, one file per clip and condition |
 | `labels/*.json` | the hand labels: one person box per frame, ID 1, `visible` flag, labeled range in `range` |
 
-Short version: RT-DETR found 410 of 416 people in every condition. DETR found 396 of 416 on dark frames and 411 of 416 after gamma 1.5; the difference comes mostly from one clip (`whiteboard`). Seven clips, one scene each, so treat it as exploratory.
+Short version: RT-DETR found the person in 410 of 416 scored frames in every condition. DETR found the person in 396 of 416 on dark frames and in 411 of 416 after gamma 1.5; the difference comes mostly from one clip (`whiteboard`). Seven clips, one scene each, so treat it as exploratory.
 
 ## Run it
 
