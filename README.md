@@ -2,7 +2,7 @@
 
 Code, hand labels and saved results for a test of two ways to brighten dark video before running a person detector. It uses 7 real dark clips from the PiLLVD dataset, each with a normal-light twin, and 60 hand-labeled frames per clip (420 frames, 416 labeled person boxes).
 
-This repository holds no video frames. The frames belong to the PiLLVD dataset (Abu Awwad, Rosin, Karakus, arXiv 2611.16515, Zenodo record 23015904, CC BY 4.0). `tools/fetch_clips.py` downloads the 7 clips from Zenodo, about 9 GB.
+This repository holds no video frames. The frames belong to the PiLLVD dataset (Abu Awwad, Rosin, Karakuş, arXiv 2611.16515, Zenodo record 23015904, CC BY 4.0). `tools/fetch_clips.py` downloads the 7 clips from Zenodo, about 9 GB.
 
 ## What was tested
 
