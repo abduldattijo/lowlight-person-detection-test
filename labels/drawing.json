@@ -1,0 +1,792 @@
+{
+  "frames": {
+    "frame0000.jpg": {
+      "boxes": [],
+      "done": false
+    },
+    "frame0010.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0011.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0012.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0013.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0014.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0015.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0016.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0017.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0018.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0019.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0020.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0021.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0022.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0023.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0024.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0025.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0026.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0027.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0028.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0029.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0030.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0031.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0032.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0033.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0034.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0035.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0036.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0037.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0038.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0039.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0040.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0041.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0042.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0043.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0044.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0045.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0046.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0047.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0048.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0049.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0050.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0051.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0052.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0053.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0054.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0055.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0056.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0057.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0058.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0059.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0060.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0061.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0062.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0063.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0064.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0065.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0066.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0067.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0068.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    },
+    "frame0069.jpg": {
+      "boxes": [
+        {
+          "id": 1,
+          "visible": true,
+          "x1": 865,
+          "x2": 2219,
+          "y1": 0,
+          "y2": 2159
+        }
+      ],
+      "done": true
+    }
+  },
+  "range": [
+    10,
+    69
+  ]
+}

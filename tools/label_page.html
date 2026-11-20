@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Low-light labeling</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--mut:#666;--bd:#ccc;--pn:#f4f4f4}
+@media(prefers-color-scheme:dark){:root{--bg:#161616;--fg:#eee;--mut:#999;--bd:#444;--pn:#222}}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px system-ui,sans-serif}
+#top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px 12px;background:var(--pn);border-bottom:1px solid var(--bd)}
+button,select,input{font:inherit;padding:3px 8px}
+#main{display:flex;gap:10px;padding:10px}
+.cv{position:relative;flex:1;min-width:0}
+.cv h4{margin:0 0 4px;font-weight:600}
+canvas{width:100%;height:auto;display:block;border:1px solid var(--bd);cursor:crosshair}
+#side{width:260px;flex:none}
+#boxes div{padding:3px 6px;border:1px solid var(--bd);margin-bottom:3px;cursor:pointer}
+#boxes div.sel{outline:2px solid #e8590c}
+.mut{color:var(--mut)} kbd{border:1px solid var(--bd);padding:0 4px;border-radius:3px}
+#bar{height:10px;background:var(--pn);border:1px solid var(--bd);position:relative;margin:4px 12px}
+#bar i{position:absolute;top:0;bottom:0;background:#2b8a3e}
+</style></head><body>
+<div id="top">
+ <select id="clip"></select>
+ <button id="prev">&larr; Prev</button><span id="pos"></span><button id="next">Next &rarr;</button>
+ <label>go to <input id="goto" size="4"></label>
+ <label>range <input id="r0" size="3" value="0"> to <input id="r1" size="3" value="0"></label>
+ <label><input type="checkbox" id="showll" checked> dark frame</label>
+ <span id="save" class="mut"></span>
+</div>
+<div id="bar"></div>
+<div id="main">
+ <div class="cv"><h4>Normal-light frame (draw here)</h4><canvas id="c1"></canvas></div>
+ <div class="cv" id="cv2"><h4>Dark frame (check only)</h4><canvas id="c2"></canvas></div>
+ <div id="side">
+  <p><b>Boxes in this frame</b></p><div id="boxes"></div>
+  <p class="mut">Frame status: <b id="st"></b></p>
+  <p class="mut" style="line-height:1.7">
+  <kbd>drag</kbd> draw a box for the selected ID<br>
+  <kbd>N</kbd> new person (new ID), then drag<br>
+  <kbd>1-9</kbd> select ID<br>
+  <kbd>C</kbd> copy previous frame's boxes (same IDs)<br>
+  <kbd>V</kbd> toggle visible (hidden = not scored)<br>
+  <kbd>Del</kbd> delete selected box<br>
+  <kbd>Enter</kbd> mark frame done, go next<br>
+  <kbd>&larr; &rarr;</kbd> prev / next<br>
+  Dragging again for the same ID replaces its box
+  </p>
+  <p class="mut">Rules: a person who leaves and returns gets a new ID. A frame is "done" only after you press Enter; done with no boxes means nobody visible. Box a person only if visible in the normal-light frame; hidden (V) = present but not countable.</p>
+ </div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+let clips=[],cur=null,labels={},i=0,sel=null,drag=null,dirty=false,imgs={};
+const COL=['#e8590c','#1971c2','#2b8a3e','#ae3ec9','#c92a2a','#0c8599','#e67700','#5f3dc4','#364fc7'];
+const col=id=>COL[(id-1)%COL.length];
+const c1=$('c1'),c2=$('c2');
+
+async function init(){
+  clips=await (await fetch('/api/clips')).json();
+  $('clip').innerHTML=clips.map(c=>`<option>${c.clip}</option>`).join('');
+  $('clip').onchange=load; await load();
+}
+async function load(){
+  if(dirty) await save();
+  cur=clips.find(c=>c.clip==$('clip').value);
+  labels=await (await fetch('/api/labels/'+cur.clip)).json();
+  if(!labels.frames) labels={frames:{},range:[0,Math.min(cur.frames.length-1,299)]};
+  $('r0').value=labels.range[0];$('r1').value=labels.range[1];
+  i=labels.range[0];
+  // jump to first not-done frame in range
+  for(let k=labels.range[0];k<=labels.range[1];k++){ if(!(labels.frames[cur.frames[k]]||{}).done){i=k;break;} }
+  show();
+}
+function F(){return cur.frames[i];}
+function fr(){ const n=F(); if(!labels.frames[n]) labels.frames[n]={done:false,boxes:[]}; return labels.frames[n]; }
+function loadImg(kind,n){
+  const k=cur.clip+'/'+kind+n; if(imgs[k]) return imgs[k];
+  const im=new Image(); im.src=`/frame/${cur.clip}/${kind}/${n}`; imgs[k]=im;
+  if(Object.keys(imgs).length>12) delete imgs[Object.keys(imgs)[0]]; return im;
+}
+function show(){
+  sel=null; $('pos').textContent=` ${F()}  (${i} of ${cur.frames.length-1}) `;
+  $('cv2').style.display=$('showll').checked?'':'none';
+  for(const [cv,kind] of [[c1,'nl_final'],[c2,'ll_final']]){
+    const im=loadImg(kind,F());
+    const go=()=>{cv.width=im.naturalWidth;cv.height=im.naturalHeight;draw();};
+    im.complete&&im.naturalWidth?go():im.onload=go;
+  }
+  // prefetch next
+  if(i+1<cur.frames.length){loadImg('nl_final',cur.frames[i+1]);loadImg('ll_final',cur.frames[i+1]);}
+  side(); bar();
+}
+function draw(){
+  for(const [cv,kind] of [[c1,'nl_final'],[c2,'ll_final']]){
+    const im=loadImg(kind,F()); if(!im.naturalWidth) continue;
+    const g=cv.getContext('2d'); g.drawImage(im,0,0);
+    const t=Math.max(4,cv.width/500);
+    for(const b of fr().boxes){
+      g.lineWidth=t*(b.id==sel?1.8:1);g.strokeStyle=col(b.id);g.setLineDash(b.visible?[]:[t*3,t*2]);
+      g.strokeRect(b.x1,b.y1,b.x2-b.x1,b.y2-b.y1);
+      g.fillStyle=col(b.id);g.font=`${t*6}px sans-serif`;g.fillText('ID '+b.id+(b.visible?'':' hidden'),b.x1+t,b.y1-t*2);
+    }
+    if(drag&&cv===c1){g.setLineDash([]);g.lineWidth=t;g.strokeStyle=col(sel||1);g.strokeRect(drag.x1,drag.y1,drag.x2-drag.x1,drag.y2-drag.y1);}
+  }
+}
+function side(){
+  const f=fr();$('st').textContent=f.done?'done':'not done';
+  $('boxes').innerHTML=f.boxes.map(b=>`<div class="${b.id==sel?'sel':''}" style="border-left:6px solid ${col(b.id)}" data-id="${b.id}">ID ${b.id} ${b.visible?'':'(hidden)'}</div>`).join('')||'<span class="mut">none</span>';
+  document.querySelectorAll('#boxes div').forEach(d=>d.onclick=()=>{sel=+d.dataset.id;side();draw();});
+}
+function bar(){
+  const [a,b]=[+$('r0').value,+$('r1').value],n=b-a+1;let h='';
+  for(let k=a;k<=b;k++) if((labels.frames[cur.frames[k]]||{}).done) h+=`<i style="left:${(k-a)/n*100}%;width:${100/n}%"></i>`;
+  $('bar').innerHTML=h;
+}
+function maxId(){let m=0;for(const f of Object.values(labels.frames)) for(const b of f.boxes) m=Math.max(m,b.id);return m;}
+function pt(e,cv){const r=cv.getBoundingClientRect();return {x:(e.clientX-r.left)*cv.width/r.width,y:(e.clientY-r.top)*cv.height/r.height};}
+c1.onmousedown=e=>{ if(!sel){sel=Math.max(1,maxId());} const p=pt(e,c1);drag={x0:p.x,y0:p.y,x1:p.x,y1:p.y,x2:p.x,y2:p.y};};
+c1.onmousemove=e=>{if(!drag)return;const p=pt(e,c1);drag.x1=Math.min(drag.x0,p.x);drag.x2=Math.max(drag.x0,p.x);drag.y1=Math.min(drag.y0,p.y);drag.y2=Math.max(drag.y0,p.y);draw();};
+window.onmouseup=()=>{
+  if(!drag)return; const d=drag;drag=null;
+  if(d.x2-d.x1>8&&d.y2-d.y1>8){
+    const f=fr(),old=f.boxes.find(b=>b.id==sel);
+    f.boxes=f.boxes.filter(b=>b.id!=sel);
+    f.boxes.push({id:sel,x1:Math.round(d.x1),y1:Math.round(d.y1),x2:Math.round(d.x2),y2:Math.round(d.y2),visible:old?old.visible:true});
+    f.boxes.sort((a,b)=>a.id-b.id);f.done=false;dirty=true;
+  }
+  side();draw();bar();
+};
+function go(k){ if(k<0||k>=cur.frames.length)return; i=k; show(); }
+function done(){fr().done=true;dirty=true;save();if(i<+$('r1').value)go(i+1);else show();}
+async function save(){
+  labels.range=[+$('r0').value,+$('r1').value];
+  const r=await fetch('/api/labels/'+cur.clip,{method:'POST',body:JSON.stringify(labels)});
+  dirty=false;$('save').textContent=r.ok?'saved '+new Date().toLocaleTimeString():'SAVE FAILED';
+}
+$('prev').onclick=()=>go(i-1);$('next').onclick=()=>go(i+1);
+$('goto').onchange=()=>go(+$('goto').value);
+$('r0').onchange=$('r1').onchange=()=>{dirty=true;save();bar();};
+$('showll').onchange=show;
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT')return;
+  const f=fr();
+  if(e.key==='ArrowRight')go(i+1); else if(e.key==='ArrowLeft')go(i-1);
+  else if(e.key==='Enter'){e.preventDefault();done();}
+  else if(e.key==='n'||e.key==='N'){sel=maxId()+1;side();$('save').textContent='new ID '+sel+': drag a box';}
+  else if(/^[1-9]$/.test(e.key)){sel=+e.key;side();draw();}
+  else if(e.key==='c'||e.key==='C'){
+    if(i===0)return;const p=labels.frames[cur.frames[i-1]];if(!p)return;
+    for(const b of p.boxes) if(!f.boxes.some(x=>x.id==b.id)) f.boxes.push({...b});
+    f.boxes.sort((a,b)=>a.id-b.id);f.done=false;dirty=true;side();draw();
+  }
+  else if(e.key==='v'||e.key==='V'){const b=f.boxes.find(b=>b.id==sel);if(b){b.visible=!b.visible;dirty=true;side();draw();}}
+  else if(e.key==='Delete'||e.key==='Backspace'){f.boxes=f.boxes.filter(b=>b.id!=sel);dirty=true;sel=null;side();draw();}
+});
+setInterval(()=>{if(dirty)save();},15000);
+window.onbeforeunload=()=>{if(dirty)navigator.sendBeacon('/api/labels/'+cur.clip,JSON.stringify(labels));};
+init();
+</script></body></html>
